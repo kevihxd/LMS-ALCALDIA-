@@ -1,0 +1,422 @@
+-- SCRIPT SQL --
+create database lms;
+use lms;
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 14-02-2026 a las 23:13:55
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `lms`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `admins`
+--
+
+CREATE TABLE `admins` (
+  `id` int(11) NOT NULL,
+  `usuario` varchar(50) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `admins`
+--
+
+INSERT INTO `admins` (`id`, `usuario`, `password`) VALUES
+(1, 'adminth', '$2y$10$RwgT.WS0Pto/OSuS8EFC3ewF/FTtoENrBO2QxO0oItKVtXqKTNgUG');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `answers`
+--
+
+CREATE TABLE `answers` (
+  `id` int(11) NOT NULL,
+  `question_id` int(11) DEFAULT NULL,
+  `texto` text DEFAULT NULL,
+  `correcta` tinyint(4) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `answers`
+--
+
+INSERT INTO `answers` (`id`, `question_id`, `texto`, `correcta`) VALUES
+(1, 2, 'adsadadlaslaasdad', 0),
+(2, 2, 'adsadadlaslaasdad23', 0),
+(3, 2, 'adsadadlaslaasdad2', 0),
+(4, 2, 's', 1),
+(5, 4, 'adsadadlaslaasdad', 0),
+(6, 4, 'd', 0),
+(7, 4, '2', 1),
+(8, 4, 'w', 0),
+(9, 5, 'w', 0),
+(10, 5, 'w', 0),
+(11, 5, 'w', 0),
+(12, 5, '2', 1),
+(13, 6, 'MMPj', 0),
+(14, 6, 'npasoo{adhop', 0),
+(15, 6, 'hp', 0),
+(16, 7, 's', 1),
+(17, 7, 'a', 0),
+(18, 7, 'a', 0),
+(19, 7, 'a', 0),
+(20, 8, 'adsadadlaslaasdad31231', 1),
+(21, 8, 'adsadadlaslaasdad', 0),
+(22, 8, 'MMPj', 0),
+(23, 8, 's', 0),
+(24, 9, 'es esta', 1),
+(25, 9, 'e', 0),
+(26, 9, 'e', 0),
+(27, 9, 'e', 0),
+(28, 10, 'Aceptarlo si no afecta a otros trámites.', 0),
+(29, 10, 'Rechazarlo y continuar el trámite según el procedimiento establecido.', 1),
+(30, 10, 'Aceptarlo y compartirlo con el equipo de trabajo.', 0),
+(31, 10, 'No se', 0),
+(32, 11, 'Esperar a que alguien más lo note.', 0),
+(33, 11, 'Corregirlo sin informar a nadie.', 0),
+(34, 11, 'Informar el error y asumir la responsabilidad.', 1),
+(35, 11, 'No se', 0),
+(36, 12, 'Guardar silencio para mantener un buen ambiente laboral.', 0),
+(37, 12, 'Informar la situación por los canales establecidos.', 1),
+(38, 12, 'Comentar el caso solo con otros compañeros.', 0),
+(39, 12, 'No se', 0),
+(40, 13, 'Entregarla porque es una persona de confianza.', 0),
+(41, 13, 'Negarte y explicar que la información es reservada.', 1),
+(42, 13, 'Entregar solo una parte de la información.', 0),
+(43, 13, 'No se', 0),
+(44, 14, 'No intervenir porque no te afecta directamente.', 0),
+(45, 14, 'Justificarlo si el recurso no es muy costoso.', 0),
+(46, 14, 'Reportar la situación por los mecanismos correspondientes.', 1),
+(47, 14, 'No sabe', 0),
+(48, 15, 'Omitir parte de la información para evitar conflictos.', 0),
+(49, 15, 'Dar una respuesta ambigua.', 0),
+(50, 15, 'Brindar información clara, veraz y oportuna.', 1),
+(51, 15, 'No sabe', 0),
+(52, 16, 'Tomar la decisión sin consultar para no retrasar el proceso.', 0),
+(53, 16, 'Preguntar a un compañero sin verificar la norma.', 0),
+(54, 16, 'Buscar orientación con tu superior o área competente.', 1),
+(55, 16, 'No sabe', 0),
+(56, 17, 'Mantener el mismo trato para no generar conflictos.', 0),
+(57, 17, 'Favorecer también a conocidos.', 0),
+(58, 17, 'Garantizar igualdad de trato y reportar la situación si es necesario.', 1),
+(59, 17, 'No sabe', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `certificates`
+--
+
+CREATE TABLE `certificates` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `module_id` int(11) NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `certificates`
+--
+
+INSERT INTO `certificates` (`id`, `user_id`, `module_id`, `fecha`) VALUES
+(1, 1, 4, '2026-02-06 11:43:23'),
+(2, 2, 4, '2026-02-06 21:57:16'),
+(3, 4, 4, '2026-02-09 05:23:04'),
+(4, 1, 7, '2026-02-09 00:55:45'),
+(5, 1, 8, '2026-02-09 03:41:26'),
+(6, 1, 9, '2026-02-09 03:53:01'),
+(7, 5, 9, '2026-02-10 16:10:08');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `courses`
+--
+
+CREATE TABLE `courses` (
+  `id` int(11) NOT NULL,
+  `titulo` varchar(150) DEFAULT NULL,
+  `estado` tinyint(4) DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `materials`
+--
+
+CREATE TABLE `materials` (
+  `id` int(11) NOT NULL,
+  `module_id` int(11) DEFAULT NULL,
+  `tipo` enum('pdf','video','link','texto') DEFAULT NULL,
+  `contenido` text DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `materials`
+--
+
+INSERT INTO `materials` (`id`, `module_id`, `tipo`, `contenido`, `orden`) VALUES
+(3, 4, 'texto', 'bacanj', NULL),
+(4, 6, '', 'uploads/materiales/img_69892626ed4cc.jpeg', NULL),
+(5, 6, '', 'uploads/materiales/img_698926385c028.jpeg', NULL),
+(6, 6, '', 'uploads/materiales/img_6989263f6d3ca.jpeg', NULL),
+(7, 6, '', 'uploads/materiales/img_698928ef77c6d.jpeg', NULL),
+(8, 7, '', 'uploads/materiales/img_69892df8b81f7.jpeg', NULL),
+(9, 7, 'pdf', 'sfsdf', NULL),
+(10, 7, 'video', 'https://youtu.be/aiDGmD4jinE?si=Y2YInqqcMdxyAt9C', NULL),
+(11, 7, 'texto', 'https://youtu.be/aiDGmD4jinE?si=Y2YInqqcMdxyAt9C', NULL),
+(12, 8, 'pdf', 'uploads/materiales/pdf_698941be38c2d.pdf', NULL),
+(13, 8, 'video', 'https://youtu.be/g2CiCEfn9dk?si=q4XGQOskqhBhD6OK', NULL),
+(14, 8, 'texto', 'muy chuiimba', NULL),
+(15, 8, 'link', 'https://youtu.be/g2CiCEfn9dk?si=q4XGQOskqhBhD6OK', NULL),
+(16, 8, '', 'uploads/materiales/img_698941fac1f62.jpeg', NULL),
+(17, 8, '', 'uploads/materiales/img_698942322c9c0.png', NULL),
+(18, 8, '', 'uploads/materiales/img_6989574bb3ed6.jpg', NULL),
+(19, 9, '', 'uploads/materiales/img_698957e9642ff.jpeg', NULL),
+(20, 9, '', 'uploads/materiales/img_698957f545d10.jpeg', NULL),
+(21, 9, '', 'uploads/materiales/img_698957fe758c6.jpeg', NULL),
+(22, 9, '', 'uploads/materiales/img_69895804889ff.jpeg', NULL),
+(23, 9, 'video', 'https://youtu.be/aiDGmD4jinE?si=Y2YInqqcMdxyAt9C', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `modules`
+--
+
+CREATE TABLE `modules` (
+  `id` int(11) NOT NULL,
+  `course_id` int(11) DEFAULT NULL,
+  `titulo` varchar(150) DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL,
+  `estado` tinyint(4) DEFAULT 1,
+  `descripcion` text DEFAULT NULL,
+  `activo` tinyint(1) DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `modules`
+--
+
+INSERT INTO `modules` (`id`, `course_id`, `titulo`, `orden`, `estado`, `descripcion`, `activo`) VALUES
+(9, NULL, 'HONESTIDAD', NULL, 1, 'Parte del Código de Integridad — Alcaldía de San José de Cúcuta', 1),
+(11, NULL, 'CURSO DE TRANSITO', NULL, 1, 'lhÑCOO{FH{aogfoho', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `progress`
+--
+
+CREATE TABLE `progress` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `module_id` int(11) DEFAULT NULL,
+  `aprobado` tinyint(4) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `questions`
+--
+
+CREATE TABLE `questions` (
+  `id` int(11) NOT NULL,
+  `module_id` int(11) DEFAULT NULL,
+  `pregunta` text DEFAULT NULL,
+  `tipo` varchar(50) NOT NULL DEFAULT 'abierta'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `questions`
+--
+
+INSERT INTO `questions` (`id`, `module_id`, `pregunta`, `tipo`) VALUES
+(4, 4, 'DE QUE COLOR ES EL SOL', 'opcion_multiple'),
+(5, 4, 'www', 'opcion_multiple'),
+(6, 4, 'DE QUE COLOR ES EL SOL', 'opcion_multiple'),
+(7, 4, 'DE QUE COLOR ES EL SOL', 'opcion_multiple'),
+(8, 7, 'DE QUE COLOR ES EL SOL', 'opcion_multiple'),
+(9, 8, 'DE QUE COLOR ES EL SOL', 'opcion_multiple'),
+(10, 9, 'Un ciudadano ofrece un incentivo económico para agilizar un trámite que realizas en la Alcaldía. ¿Cuál es la actuación correcta?', 'opcion_multiple'),
+(11, 9, 'Detectas un error en un informe que ya fue enviado y puede afectar una decisión administrativa. ¿Qué debes hacer?', 'opcion_multiple'),
+(12, 9, 'Un compañero te pide que no reportes una irregularidad para “evitar problemas internos”. ¿Qué acción refleja honestidad?', 'opcion_multiple'),
+(13, 9, 'Un familiar solicita acceso a información interna que aún no es pública. ¿Cómo debes actuar?', 'opcion_multiple'),
+(14, 9, 'Observas que un servidor público utiliza recursos de la Alcaldía para fines personales. ¿Qué debes hacer?', 'opcion_multiple'),
+(15, 9, 'Al responder una solicitud ciudadana, sabes que la información puede generar inconformidad. ¿Qué es lo correcto?', 'opcion_multiple'),
+(16, 9, 'Tienes dudas sobre un procedimiento que debes aplicar en tu cargo. ¿Cuál es la acción más honesta?', 'opcion_multiple'),
+(17, 9, 'Notas que algunos ciudadanos reciben trato preferencial en tu dependencia. ¿Qué conducta es coherente con la honestidad?', 'opcion_multiple');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `cedula` varchar(20) DEFAULT NULL,
+  `nombre` varchar(100) DEFAULT NULL,
+  `secretaria` varchar(255) DEFAULT NULL,
+  `dependencia` varchar(255) DEFAULT NULL,
+  `sexo` enum('H','M','OTRO') DEFAULT NULL,
+  `correo` varchar(150) DEFAULT NULL,
+  `telefono` varchar(50) DEFAULT NULL,
+  `tipo_funcionario` enum('CONTRATISTA','FUNCIONARIO PUBLICO') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `cedula`, `nombre`, `secretaria`, `dependencia`, `sexo`, `correo`, `telefono`, `tipo_funcionario`) VALUES
+(5, '1005027348', 'PEDRO ALIRIO SANCHEZ RAMOS', 'Oficina de Tecnologías de la Información y las Comunicaciones', 'Oficina de Tecnologías de la Información y las Comunicaciones', 'H', 'pedroalirio123@gmail.com', '3236903548', 'CONTRATISTA'),
+(12, '10050273482', 'prueba2', 'Despacho del Alcalde', 'Despacho del Alcalde', 'M', 'pedroalirio123@gmail.com', '3117305171', 'CONTRATISTA'),
+(13, '1978075', 'pedro', 'Despacho del Alcalde', 'Despacho del Alcalde', 'H', 'pedroalirio123@gmail.com', '3117305171', 'CONTRATISTA');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `answers`
+--
+ALTER TABLE `answers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `certificates`
+--
+ALTER TABLE `certificates`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `courses`
+--
+ALTER TABLE `courses`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `materials`
+--
+ALTER TABLE `materials`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `modules`
+--
+ALTER TABLE `modules`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `progress`
+--
+ALTER TABLE `progress`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `questions`
+--
+ALTER TABLE `questions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `cedula` (`cedula`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `answers`
+--
+ALTER TABLE `answers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+
+--
+-- AUTO_INCREMENT de la tabla `certificates`
+--
+ALTER TABLE `certificates`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `courses`
+--
+ALTER TABLE `courses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `materials`
+--
+ALTER TABLE `materials`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT de la tabla `modules`
+--
+ALTER TABLE `modules`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT de la tabla `progress`
+--
+ALTER TABLE `progress`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `questions`
+--
+ALTER TABLE `questions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT de la tabla `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+ALTER TABLE users ADD COLUMN password VARCHAR(255) AFTER cedula;
