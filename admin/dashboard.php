@@ -16,6 +16,7 @@ $admin = $_SESSION['admin'];
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Panel Administrador</title>
 
 <style>
@@ -142,6 +143,17 @@ h2{
     background:#991b1b;
 }
 
+/* CARD ESPECIAL PARA CURSOS */
+.curso-card.gold{
+    border-left-color: #f59e0b;
+}
+.curso-card.gold a{
+    background: #f59e0b;
+}
+.curso-card.gold a:hover{
+    background: #d97706;
+}
+
 /* CARD PELIGRO */
 .curso-card.logout{
     border-left-color:#111827;
@@ -164,7 +176,7 @@ footer{
     text-align:center;
     padding:30px 20px;
     font-size:14px;
-    margin-top:60px;
+    margin-top:auto;
 }
 
 /* =========================
@@ -193,7 +205,7 @@ footer{
 <header>
     <h1>Plataforma LMS Institucional</h1>
     <div class="header-right">
-        <div class="user">Admin: <?=htmlspecialchars($admin['nombre'] ?? 'Administrador')?></div>
+        <div class="user">Admin: <?=htmlspecialchars($admin['usuario'] ?? 'Administrador')?></div>
         <a href="logout2.php">Cerrar sesión</a>
     </div>
 </header>
@@ -205,13 +217,23 @@ footer{
 
         <div class="cursos">
 
+            <div class="curso-card gold">
+                <b>➕ Crear nuevo curso</b>
+                <a href="crear_curso.php">Ir</a>
+            </div>
+
+            <div class="curso-card gold">
+                <b>📚 Gestionar cursos</b>
+                <a href="ver_cursos.php">Ir</a>
+            </div>
+
             <div class="curso-card">
                 <b>➕ Crear nuevo módulo</b>
                 <a href="crear_modulo.php">Ir</a>
             </div>
 
             <div class="curso-card">
-                <b>📚 Gestionar módulos</b>
+                <b>🧩 Gestionar módulos</b>
                 <a href="ver_modulos.php">Ir</a>
             </div>
 
