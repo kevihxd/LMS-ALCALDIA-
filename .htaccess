@@ -1,0 +1,27 @@
+# ==========================
+# Activar mod_rewrite
+# ==========================
+RewriteEngine On
+RewriteBase /lms/
+
+# ==========================
+# Bloquear db.php con mensaje
+# ==========================
+<Files "config/db.php">
+    Order Allow,Deny
+    Deny from all
+    # Mostrar mensaje en navegador
+    ErrorDocument 403 "🚫 Acceso denegado. Este archivo es confidencial."
+</Files>
+
+# ==========================
+# Hacer login accesible desde /login o /auth/login.php
+# ==========================
+RewriteRule ^login/?$ auth/login.php [L,QSA]
+
+# ==========================
+# Servir archivos existentes (JS, CSS, imágenes, uploads)
+# ==========================
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
